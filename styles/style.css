@@ -1,0 +1,155 @@
+body {
+    background: #000;
+    margin: auto;
+    padding: 0px;
+    text-align: center;
+    font-family: UbuntuL;
+    color: #fff;
+    display: grid;
+    grid-template-areas: "algo-info menu" "algo-info container";
+    grid-template-rows: 100px 1fr;
+    grid-template-columns: 25vw 1fr;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+a#repository {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+}
+
+a#repository img {
+    width: 50px;
+    height: 50px;
+}
+
+#algo-info {
+    grid-area: algo-info;
+    background: #222;
+    height: 100%;
+    width: 100%;
+    padding: 100px 0px;
+}
+
+#algo-info .algo-details {
+    display: block;
+    padding: 25px;
+    text-align: justify;
+    text-indent: 50px;
+    line-height: 25px;
+    font-weight: bold;
+}
+
+#algo-info .algo-complexity {
+    display: block;
+}
+
+#algo-info .algo-complexity ul {
+    text-align: left;
+    list-style-type: square;
+}
+
+#algo-info .algo-complexity ul .complexity-item {
+    font-weight: bold;
+    display: inline-block;
+    width: 160px;
+}
+#algo-info .algo-complexity ul .complexity-value {
+    padding: 5px;
+}
+
+#container {
+    grid-area: container;
+    width: 100%;
+    height: 100%;
+    border-top: #333 10px solid;
+}
+
+#bars {
+    margin: auto;
+    width: 700px;
+    height: 500px;
+}
+
+.bar {
+    background: green;
+    display: inline-block;
+    border-right: 2px solid #000;
+    margin: 0px;
+    position: relative;
+    bottom: 0px;
+    vertical-align: top;
+    text-align: center;
+    font-weight: bold;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.compared {
+    transition: background-color ease-in 0.1s;
+    background: #77c9d4;
+}
+
+.red {
+    background: red;
+}
+
+#menu {
+    background: #000;
+    grid-area: menu;
+    display: grid;
+    grid-template-areas: "sliders algos buttons" "sliders sort-order buttons";
+    grid-column-gap: 25px;
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    padding: 0px;
+}
+
+#sliders {
+    grid-area: sliders;
+    margin: auto;
+    width: 300px;
+}
+
+#algos {
+    grid-area: algos;
+    align-items: center;
+    margin: auto;
+    width: 300px;
+}
+
+#sort-order {
+    grid-area: sort-order;
+}
+
+#buttons {
+    grid-area: buttons;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
+    width: 300px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        grid-template-areas: "menu" "container" "algo-info";
+        grid-template-rows: 100px 1fr;
+        grid-template-columns: 100vw 1fr;
+    }
+
+    #algo-info {
+        padding: 10px 0px;
+    }
+}

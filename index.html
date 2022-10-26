@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="images/pc.ico" />
+        <title>Visualization of Sorting Algorithms</title>
+        <script src="script/jquery-3.4.1.min.js"></script>
+        <link rel="stylesheet" href="styles/fonts.css" />
+        <link rel="stylesheet" href="styles/style.css" />
+        <link rel="stylesheet" href="styles/interface.css" />
+    </head>
+    <body>
+        <a id="repository" href="" target="_blank">
+            <img src="images/github.png" alt="GitHub" title="Visit Repository" />
+        </a>
+        <div id="menu">
+            <div id="sliders">
+                <div class="slider">
+                    <label for="speed">Speed</label>
+                    <input class="slider-input" name="speed" id="speed" type="range" min="1" max="100" value="51" />
+                    <span class="count" id="speed-count">0</span>
+                </div>
+
+                <div class="slider">
+                    <label for="elements">Elements</label>
+                    <input class="slider-input" name="elements" id="elements" type="range" min="5" max="30" value="5" />
+                    <span class="count" id="element-count">0</span>
+                </div>
+            </div>
+            <div id="algos">
+                <label>Algorithm</label>
+                <select id="algorithms">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="comb">Comb Sort</option>
+                    <option value="heap">Heap Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="shell">Shell Sort</option>
+                </select>
+            </div>
+            <div id="sort-order">
+                <label>Order</label>
+                <select id="order">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+            </div>
+            <div id="buttons">
+                <input type="button" id="sort" class="sort green" value="Sort" />
+                <input type="button" id="stop" value="Stop" disabled />
+                <input type="button" id="reset" class="green" value="Reset" />
+                <input type="button" id="restart" class="green" value="Restart" />
+            </div>
+        </div>
+        <div id="algo-info">
+            <div id="bubble-info" class="algo-container hidden">
+                <h2 class="algo-header">Bubble Sort</h2>
+                <span class="algo-details">
+                    Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list, compares
+                    adjacent elements and swaps them if they are in the wrong order.
+                </span>
+                <span class="algo-complexity">
+                    <ul>
+                        <li class="algo-info"><span class="complexity-item">Worst Complexity : </span><span class="complexity-value">N^2</span></li>
+                        <li class="algo-info"><span class="complexity-item">Average Complexity : </span><span class="complexity-value">N^2</span></li>
+                        <li class="algo-info"><span class="complexity-item">Best Complexity : </span><span class="complexity-value">N</span></li>
+                        <li class="algo-info"><span class="complexity-item">Space Complexity : </span><span class="complexity-value">1</span></li>
+                        <li class="algo-info"><span class="complexity-item">Method : </span><span class="complexity-value">Exchanging</span></li>
+                        <li class="algo-info"><span class="complexity-item">Stable : </span><span class="complexity-value">Yes</span></li>
+                    </ul>
+                </span>
+            </div>
+
+            <div id="comb-info" class="algo-container hidden">
+                <h2 class="algo-header">Comb Sort</h2>
+                <span class="algo-details">
+                    Comb Sort is mainly an improvement over Bubble Sort. Bubble sort always compares adjacent values. So all inversions are removed
+                    one by one. Comb Sort improves on Bubble Sort by using gap of size more than 1.
+                </span>
+                <span class="algo-complexity">
+                    <ul>
+                        <li class="algo-info"><span class="complexity-item">Worst Complexity : </span><span class="complexity-value">N^2</span></li>
+                        <li class="algo-info">
+                            <span class="complexity-item">Average Complexity : </span><span class="complexity-value">N * log(N)</span>
+                        </li>
+                        <li class="algo-info"><span class="complexity-item">Best Complexity : </span><span class="complexity-value">N</span></li>
+                        <li class="algo-info"><span class="complexity-item">Space Complexity : </span><span class="complexity-value">1</span></li>
+                        <li class="algo-info"><span class="complexity-item">Method : </span><span class="complexity-value">Exchanging</span></li>
+                        <li class="algo-info"><span class="complexity-item">Stable : </span><span class="complexity-value">No</span></li>
+                    </ul>
+                </span>
+            </div>
+
+            <div id="heap-info" class="algo-container hidden">
+                <h2 class="algo-header">Heap Sort</h2>
+                <span class="algo-details">
+                    Heap sort is a comparison based sorting technique based on Binary Heap data structure. It is similar to selection sort where we
+                    first find the maximum element and place the maximum element at the end. We repeat the same process for remaining element.
+                </span>
+                <span class="algo-complexity">
+                    <ul>
+                        <li class="algo-info">
+                            <span class="complexity-item">Worst Complexity : </span><span class="complexity-value">N * log(N)</span>
+                        </li>
+                        <li class="algo-info">
+                            <span class="complexity-item">Average Complexity : </span><span class="complexity-value">N * log(N)</span>
+                        </li>
+                        <li class="algo-info">
+                            <span class="complexity-item">Best Complexity : </span><span class="complexity-value">N * log(N)</span>
+                        </li>
+                        <li class="algo-info"><span class="complexity-item">Space Complexity : </span><span class="complexity-value">1</span></li>
+                        <li class="algo-info"><span class="complexity-item">Method : </span><span class="complexity-value">Selection</span></li>
+                        <li class="algo-info"><span class="complexity-item">Stable : </span><span class="complexity-value">No</span></li>
+                    </ul>
+                </span>
+            </div>
+
+            <div id="insertion-info" class="algo-container hidden">
+                <h2 class="algo-header">Insertion Sort</h2>
+                <span class="algo-details">
+                    Insertion Sort is a simple sorting algorithm that builds the final sorted array one item at a time. It is much less efficient on
+                    large lists than more advanced algorithms such as quicksort, heapsort, or merge sort.
+                </span>
+                <span class="algo-complexity">
+                    <ul>
+                        <li class="algo-info"><span class="complexity-item">Worst Complexity : </span><span class="complexity-value">N ^ 2</span></li>
+                        <li class="algo-info">
+                            <span class="complexity-item">Average Complexity : </span><span class="complexity-value">N ^ 2</span>
+                        </li>
+                        <li class="algo-info"><span class="complexity-item">Best Complexity : </span><span class="complexity-value">N</span></li>
+                        <li class="algo-info"><span class="complexity-item">Space Complexity : </span><span class="complexity-value">1</span></li>
+                        <li class="algo-info"><span class="complexity-item">Method : </span><span class="complexity-value">Insertion</span></li>
+                        <li class="algo-info"><span class="complexity-item">Stable : </span><span class="complexity-value">Yes</span></li>
+                    </ul>
+                </span>
+            </div>
+
+            <div id="selection-info" class="algo-container hidden">
+                <h2 class="algo-header">Selection Sort</h2>
+                <span class="algo-details">
+                    Selection Sort is a sorting algorithm, specifically an in-place comparison sort. It has O time complexity, making it inefficient
+                    on large lists, and generally performs worse than the similar insertion sort
+                </span>
+                <span class="algo-complexity">
+                    <ul>
+                        <li class="algo-info"><span class="complexity-item">Worst Complexity : </span><span class="complexity-value">N ^ 2</span></li>
+                        <li class="algo-info">
+                            <span class="complexity-item">Average Complexity : </span><span class="complexity-value">N ^ 2</span>
+                        </li>
+                        <li class="algo-info"><span class="complexity-item">Best Complexity : </span><span class="complexity-value">N ^ 2</span></li>
+                        <li class="algo-info"><span class="complexity-item">Space Complexity : </span><span class="complexity-value">1</span></li>
+                        <li class="algo-info"><span class="complexity-item">Method : </span><span class="complexity-value">Selection</span></li>
+                        <li class="algo-info"><span class="complexity-item">Stable : </span><span class="complexity-value">No</span></li>
+                    </ul>
+                </span>
+            </div>
+
+            <div id="shell-info" class="algo-container hidden">
+                <h2 class="algo-header">Shell Sort</h2>
+                <span class="algo-details">
+                    Shell Sort is mainly a variation of Insertion Sort. In insertion sort, we move elements only one position ahead. When an element
+                    has to be moved far ahead, many movements are involved. The idea of shellSort is to allow exchange of far items.
+                </span>
+                <span class="algo-complexity">
+                    <ul>
+                        <li class="algo-info">
+                            <span class="complexity-item">Worst Complexity : </span><span class="complexity-value">Depends on Gap Sequence</span>
+                        </li>
+                        <li class="algo-info">
+                            <span class="complexity-item">Average Complexity : </span><span class="complexity-value">N * log(N)^2 OR N ^ (3/2)</span>
+                        </li>
+                        <li class="algo-info"><span class="complexity-item">Best Complexity : </span><span class="complexity-value">N</span></li>
+                        <li class="algo-info"><span class="complexity-item">Method : </span><span class="complexity-value">Insertion</span></li>
+                        <li class="algo-info"><span class="complexity-item">Stable : </span><span class="complexity-value">No</span></li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+        <div id="container"><div id="bars"></div></div>
+
+        <script>
+            const CONTAINER_WIDTH = 600;
+            let TOTAL_ELEMENTS = document.getElementById("elements").value;
+            let SPEED = document.getElementById("speed").value;
+            let container = document.getElementById("bars");
+            let bars = document.getElementsByClassName("bar");
+        </script>
+
+        <script src="script/interface.js"></script>
+        <script src="script/animation.js"></script>
+        <script src="script/algorithms.js"></script>
+        <script src="script/testing.js"></script>
+    </body>
+</html>
